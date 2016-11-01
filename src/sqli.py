@@ -1,1 +1,1 @@
-print 'Hello!'
+var = 1337
