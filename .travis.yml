@@ -1,3 +1,3 @@
 language: python
 install: true
-script: nosetests --exe --logging-level=INFO -vvvv
+script: nosetests
