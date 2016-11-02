@@ -1,4 +1,4 @@
-from pysql.sqli import var
+from pysql import sqli
 
 def var_test():
-    assert 1337 == var
+    assert 1337 == sqli.var
