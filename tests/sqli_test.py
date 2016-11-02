@@ -1,4 +1,4 @@
-from src.sqli import var
+from src import sqli
 
 def var_test():
-    assert 1337 == var
+    assert 1337 == sqli.var
