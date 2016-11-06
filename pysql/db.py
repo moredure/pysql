@@ -1,9 +1,10 @@
 from sqlite3 import dbapi2 as sqlite3
 from flask import g
+from .config import DATABASE
 
 def connect_db():
     """Connects to the specific database."""
-    rv = sqlite3.connect("pysql.db")
+    rv = sqlite3.connect(DATABASE)
     rv.row_factory = sqlite3.Row
     return rv
 

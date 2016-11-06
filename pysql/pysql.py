@@ -5,7 +5,6 @@ from .db import get_db, init_db
 
 app = Flask(__name__)
 app.config.update(dict(
-    DATABASE=':memory:',
     SECRET_KEY='pysql-s3cr37'
 ))
 
@@ -20,7 +19,6 @@ def close_db(error):
     """Closes the database again at the end of the request."""
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
-
 
 @app.route('/', methods=['POST', 'GET'])
 @auth
