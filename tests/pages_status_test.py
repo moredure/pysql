@@ -9,15 +9,14 @@ class PySqlTestCase(unittest.TestCase):
         pysql.app.config['TESTING'] = True
         self.app = pysql.app.test_client()
 
-    def home_test(self):
-        rv = self.app.get('/')
+    def logout_route_test(self):
+        rv = self.app.get('/logout', follow_redirects=True)
         assert rv.status_code == 200
 
-    def user_test(self):
-        rv = self.app.get('/users/1')
+    def join_route_test(self):
+        rv = self.app.get('/join')
         assert rv.status_code == 200
 
-    def sql_injection_test(self):
-        payload = "' or 1=1 --"
-        rv = self.app.get('/users/' + payload)
-        assert b'\' or 1=1 --' in rv.data
+    def login_route_test(self):
+        rv = self.app.get('/login')
+        assert rv.status_code == 200

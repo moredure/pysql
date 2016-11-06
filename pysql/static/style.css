@@ -1,0 +1,133 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: #fff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.b-header {
+    padding: 0 20px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #28e3ae;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.b-header__link {
+    color: white;
+    text-decoration: none;
+}
+
+.b-logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.b-log-out {
+    margin-left: auto;
+}
+
+.b-main {
+    min-height: calc(100% - 60px);
+    padding: 20px;
+}
+
+.b-auth {
+    width: 350px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px -3px black;
+}
+
+.b-auth__header {
+    background-color: rgba(40, 227, 174, 0.55);
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    color: white;
+    font-weight: bold;
+}
+
+.b-auth__error {
+    background-color: rgba(255, 0, 0, 0.63);
+    color: white;
+    line-height: 35px;
+    text-align: center;
+}
+
+.b-form {
+    padding: 5px;
+}
+
+.b-form__input, .b-auth__error {
+    box-shadow: 0 0 15px -5px grey inset;
+    border-radius: 3px;
+    margin: 5px 0;
+    height: 35px;
+    padding: 0 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+    vertical-align: top;
+}
+
+.b-form__group {
+    margin: 5px 0;
+    width: 100%;
+    height: 35px;
+}
+
+.b-form__button {
+    background-color: white;
+    border: 1px solid rgba(40, 227, 174, 0.55);
+    color: rgba(40, 227, 174, 0.55);
+    line-height: 35px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    height: 35px;
+    width: 48%;
+    float: left;
+    outline: none;
+    cursor: pointer;
+}
+
+.b-form__button:first-child {
+    margin-right: 4%;
+}
+
+.b-search-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.b-search__input {
+     width: 400px;
+     height: 35px;
+     border: none;
+     padding: 0 10px;
+     font-size: 1.2em;
+     outline: none;
+     box-shadow: 0 0 15px -2px black;
+     margin: 20px 0;
+}
+
+.b-result {
+    color: tomato;
+    font-size: 1.1em;
+}
+
+.b-result span {
+    color: black;
+}

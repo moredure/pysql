@@ -1,14 +1,16 @@
 <!doctype html>
-<title>PySQL</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-<div class="page">
-  <h1>PySQL</h1>
-  <div class="b-nav">
-  {% if not session.logged_in %}
-    <a href="{{ url_for('login') }}">Log in</a>
-  {% else %}
-    <a href="{{ url_for('logout') }}">Log out</a>
+<head>
+  <title>PySQL</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="b-header">
+    <a class="b-header__link b-logo" href="/">PySQL</a>
+  {% if session.id %}
+    <a class="b-header__link b-log-out" href="{{ url_for('logout') }}">Log out</a>
   {% endif %}
-  </div>
-  {% block body %}{% endblock %}
-</div>
+  </header>
+  <main class="b-main">
+    {% block body %}{% endblock %}
+  </main>
+</body>
