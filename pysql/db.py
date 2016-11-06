@@ -14,6 +14,9 @@ def init_db(app):
     with app.open_resource('schema.sql', mode='r') as f:
         db.cursor().executescript(f.read())
     db.commit()
+    with app.open_resource('seed.sql', mode='r') as f:
+        db.cursor().executescript(f.read())
+    db.commit()
 
 def get_db():
     """Opens a new database connection if there is none yet for the
