@@ -2,7 +2,6 @@ import os
 from .helpers import auth, templated, deauth
 from flask import Flask, redirect, request, session, url_for, render_template, g
 from .db import get_db, init_db
-from bcrypt import gensalt, hashpw
 
 app = Flask(__name__)
 app.config.update(dict(
