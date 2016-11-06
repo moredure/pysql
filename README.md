@@ -19,5 +19,15 @@ To run project:
 ```
 Go to localhost:5000 and pentest it!
 
+## Docker build
+Build project by yourself:
+```sh
+    docker build . -t yourname/major:minor
+```
+Or pull from my repo:
+```sh
+    docker pull mikefaraponov/pysql
+```
+
 ## Credits
 * [@mikefaraponov](https://github.com/mikefaraponov)
