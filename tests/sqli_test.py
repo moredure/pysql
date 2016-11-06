@@ -30,4 +30,4 @@ class AuthTestCase(unittest.TestCase):
         rv = self.app.post('/', data=payload)
         with open('file.txt', 'wb') as f:
             f.write(rv.data)
-        assert b"1, 1, 1, 1" in rv.data
+        assert b"<b>Id:</b> 1, <b>Username:</b> 1, <b>Age:</b> 1, <b>Login:</b> 1" in rv.data

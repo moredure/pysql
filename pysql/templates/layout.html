@@ -1,14 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <head>
   <title>PySQL</title>
+  <script src="https://use.fontawesome.com/52229c3bde.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <header class="b-header">
-    <a class="b-header__link b-logo" href="/">PySQL</a>
-  {% if session.id %}
-    <a class="b-header__link b-log-out" href="{{ url_for('logout') }}">Log out</a>
-  {% endif %}
+    <a class="b-header__link b-logo" href="/"><i class="fa fa-database" aria-hidden="true"></i> PySQL</a>
+    {% if session.id %}
+    <a class="b-header__link b-log-out" href="{{ url_for('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+    {% endif %}
   </header>
   <main class="b-main">
     {% block body %}{% endblock %}

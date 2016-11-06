@@ -17,7 +17,7 @@ html, body {
     padding: 0 20px;
     height: 60px;
     line-height: 60px;
-    background-color: #28e3ae;
+    background-color: tomato;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -49,7 +49,7 @@ html, body {
 }
 
 .b-auth__header {
-    background-color: rgba(40, 227, 174, 0.55);
+    background-color: #FF8974;
     height: 40px;
     padding: 0 20px;
     line-height: 40px;
@@ -88,8 +88,8 @@ html, body {
 
 .b-form__button {
     background-color: white;
-    border: 1px solid rgba(40, 227, 174, 0.55);
-    color: rgba(40, 227, 174, 0.55);
+    border: 1px solid #FF8974;
+    color: #FF8974;
     line-height: 35px;
     text-decoration: none;
     font-weight: bold;
@@ -100,6 +100,10 @@ html, body {
     float: left;
     outline: none;
     cursor: pointer;
+}
+.b-form__button:hover {
+    background-color: #FF8974;
+    color: white;
 }
 
 .b-form__button:first-child {
@@ -126,6 +130,7 @@ html, body {
 .b-result {
     color: tomato;
     font-size: 1.1em;
+    margin: 0 0 10px 0;
 }
 
 .b-result span {

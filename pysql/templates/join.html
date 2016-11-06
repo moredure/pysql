@@ -1,18 +1,17 @@
 {% extends "layout.html" %}
 {% block body %}
-  <div class="b-auth">
-    <header class="b-auth__header">Join us</header>
-    
-    <form class="b-form" action="{{ url_for('join') }}" method="POST">
-        {% if error %}<div class="b-auth__error">{{ error }}</div> {% endif %}
-        <input class="b-form__input" type="text" name="login" placeholder="Login" required>
-        <input class="b-form__input" type="text" name="username" placeholder="Username" required>
-        <input class="b-form__input" type="number" name="age" placeholder="Age" required>
-        <input class="b-form__input" type="password" name="password" placeholder="Password" required>
-        <div class="b-form__group">
-          <input class="b-form__button" type="submit" value="Join us">
-          <a class="b-form__button" href="{{ url_for('login') }}">Login</a>
-        </div>
-    </form>
-  </div>
+<div class="b-auth">
+  <header class="b-auth__header"><i class="fa fa-user-circle" aria-hidden="true"></i> Join us</header>
+  <form class="b-form" action="{{ url_for('join') }}" method="POST">
+      {% if error %}<div class="b-auth__error">{{ error }}</div> {% endif %}
+      <input class="b-form__input" type="text" name="login" placeholder="Login" required>
+      <input class="b-form__input" type="text" name="username" placeholder="Username" required>
+      <input class="b-form__input" type="number" name="age" placeholder="Age" required>
+      <input class="b-form__input" type="password" name="password" placeholder="Password" required>
+      <div class="b-form__group">
+        <input class="b-form__button" type="submit" value="Join us">
+        <a class="b-form__button" href="{{ url_for('login') }}">Back to login</a>
+      </div>
+  </form>
+</div>
 {% endblock %}

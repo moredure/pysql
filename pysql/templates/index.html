@@ -2,15 +2,22 @@
 {% block body %}
   <div class="b-search-page">
     <form class="b-search" action="/" method="POST">
-      <input class="b-search__input" type="search" name="q" placeholder="Search...">
+      <input class="b-search__input" type="search" name="q" placeholder="Search by username...">
     </form>
     <ul class="b-results">
+    {% if not_found: %}
+    <li class="b-result">
+      <span>
+        Nothing found!
+      </span>
+    </li>
+    {% endif %}
     {% for result in results %}
-      <li class="b-result">
-        <span>
-          {{ result.id }}, {{ result.username }}, {{ result.age }}, {{ result.login }}
-        </span>
-      </li>
+    <li class="b-result">
+      <span>
+        <b>Id:</b> {{ result.id }}, <b>Username:</b> {{ result.username }}, <b>Age:</b> {{ result.age }}, <b>Login:</b> {{ result.login }}
+      </span>
+    </li>
     {% endfor %}  
     </ul>
   </div>

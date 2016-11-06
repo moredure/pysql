@@ -1,7 +1,7 @@
 import os
 from .helpers import auth, templated, deauth
-from flask import Flask, redirect, request, session, url_for, render_template, g
 from .db import get_db, init_db
+from flask import Flask, redirect, request, session, url_for, render_template, g
 
 app = Flask(__name__)
 app.config.update(dict(
@@ -29,7 +29,10 @@ def index():
         query = request.form['q']
         db = get_db()
         cur = db.execute("select username, login, age, id from users where username = '%s'" % (query))
-        return dict(results=cur.fetchall())
+        results = cur.fetchall()
+        if not len(results):
+            return dict(not_found=True)
+        return dict(results=results)
 
 @app.route('/logout')
 @deauth

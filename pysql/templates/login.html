@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
   <div class="b-auth">
-    <header class="b-auth__header">Log in</header>
-    
+    <header class="b-auth__header"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</header>
     <form class="b-form" action="{{ url_for('login') }}" method="POST">
         {% if error %}<div class="b-auth__error">{{ error }}</div> {% endif %}
         <input class="b-form__input" type="text" name="login" placeholder="Login" required>
