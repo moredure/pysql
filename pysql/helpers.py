@@ -6,7 +6,8 @@ def auth(function):
     @wraps(function)
     def wrapper(*args, **kwargs):
         db = get_db()
-        cur = db.execute('select * from users where id = ? limit 1', [session.get('id')])
+        cur = db.execute('select * from users where id = ? limit 1', \
+                                                  [session.get('id')])
         user = cur.fetchone()
         if not user:
             return redirect(url_for('login', next=request.url))

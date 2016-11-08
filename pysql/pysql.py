@@ -26,9 +26,12 @@ def close_db(error):
 def index():
     """Union SQL injection"""
     if request.method == 'POST':
-        query = request.form['q']
         db = get_db()
-        cur = db.execute("select username, login, age, id from users where username = '%s'" % (query))
+        query = "select username, login, age, id "\
+                "from users "\
+                "where username like '%{0}%'" \
+                .format(request.form['q'])
+        cur = db.execute(query)
         results = cur.fetchall()
         if not len(results):
             return dict(not_found=True)
@@ -46,8 +49,12 @@ def login():
     """Select SQL injection"""
     if request.method == 'POST':
         db = get_db()
-        cur = db.execute("select id from users where login = '%s' and password = '%s' limit 1" % 
-          (request.form['login'], request.form['password']))
+        login, passwd = request.form['login'], request.form['password']
+        query = "select id "\
+                "from users "\
+                "where login = '{0}' and password = '{1}' limit 1"\
+                .format(login, passwd)
+        cur = db.execute(query)
         user = cur.fetchone()
         if user:
             session['id'] = user['id']
@@ -60,8 +67,9 @@ def login():
 def join():
     if request.method == 'POST':
         db = get_db()
-        cur = db.execute('insert into users (login, username, password, age) values (?, ?, ?, ?)',
-           [request.form['login'],
+        query = 'insert into users (login, username, password, age) '\
+                'values (?, ?, ?, ?)'
+        cur = db.execute(query, [request.form['login'],
            request.form['username'],
            request.form['password'],
            request.form['age']])
