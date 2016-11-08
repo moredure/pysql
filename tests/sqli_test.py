@@ -41,6 +41,7 @@ class AuthTestCase(unittest.TestCase):
         self.select_sqli_test()
         payload = "notavalidname' union select name, 1, 1, 1 "\
                   "from sqlite_master "\
-                  "where type = 'table' limit 1 --"
+                  "where type = 'table' --"
         rv = self.app.post('/', data=dict(q=payload))
-        assert re.search(b'<b>Id:</b> 1, <b>Username:</b> (\w+), <b>Age:</b> 1, <b>Login:</b> 1', rv.data)
+        pattern = b'<b>Id:</b> 1, <b>Username:</b> (\w+), <b>Age:</b> 1, <b>Login:</b> 1'
+        assert re.search(pattern, rv.data)
