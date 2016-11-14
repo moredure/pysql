@@ -1,7 +1,7 @@
 # pysql
 [![Build Status](https://travis-ci.org/mikefaraponov/pysql.svg?branch=master)](https://travis-ci.org/mikefaraponov/pysql) [![Coverage Status](https://coveralls.io/repos/github/mikefaraponov/pysql/badge.svg?branch=master)](https://coveralls.io/github/mikefaraponov/pysql?branch=master)
 ## Description
-Demo for Database Security Course work which contains SQL injection vulnerabilities such as select injection and union injection
+Demo for Database Security Course work which contains SQL injection vulnerabilities such as select and union injections
 
 ## Up and running
 To install the project dependencies:
