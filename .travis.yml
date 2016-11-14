@@ -3,7 +3,7 @@ notifications:
   email: false
 install: 
     - pip install -r requirements.txt
-script: nosetests --with-cov
+script: nosetests --rednose --with-cov
 after_success: 
   coveralls
 
