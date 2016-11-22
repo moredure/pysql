@@ -1,14 +1,28 @@
+import os
 import psycopg2
+from urllib import parse
 from psycopg2.extras import DictCursor
 from flask import g
 
-DBNAME = 'dbname=pysqldb user=postgres'
+DBNAME_DEV = 'dbname=pysqldb user=postgres'
 
 def connect_db():
     """Connects to the specific database."""
-    with psycopg2.connect(DBNAME) as conn:
-        conn.cursor_factory = DictCursor
-    return conn
+    try:
+        parse.uses_netloc.append("postgres")
+        url = parse(os.environ["DATABASE_URL"])
+        with psycopg2.connect(
+            database=url.path[1:],
+            user=url.username,
+            password=url.password,
+            host=url.hostname,
+            port=url.port) as conn:
+            conn.cursor_factory = DictCursor
+            return conn
+    except:
+        with psycopg2.connect(DBNAME_DEV) as conn:
+            conn.cursor_factory = DictCursor
+            return conn
 
 def init_db(app):
     """Initializes the database."""
