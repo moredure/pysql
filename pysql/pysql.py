@@ -12,7 +12,6 @@ app.config.update(dict(
 def initdb_command():
     """Creates the database tables."""
     init_db(app)
-    get_db(app)
     print('Initialized the database.')
 
 @app.teardown_appcontext
