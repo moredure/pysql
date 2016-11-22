@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2.extras import DictCursor
 from flask import g
 
-DBNAME = 'dbname=pysqldb user=posrgres'
+DBNAME = 'dbname=pysqldb user=postgres'
 
 def connect_db():
     """Connects to the specific database."""
