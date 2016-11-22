@@ -13,7 +13,6 @@ deploy:
   provider: heroku
   app: pysql
   run:
-    - export FLASK_APP=pysql/pysql.py 
-    - flask initdb
+    - FLASK_APP=pysql/pysql.py flask initdb
   api_key:
     secure: DbVE8MhQjrriLMQ5shh4Ka6FjPglztXooNG6w1Cv+Vtf2+UfN0dgrnutGgvMyCMiZKOvco31xJK0KPDo2wkXkj6/mtOYMDVYt+N+Cv4fdWOieGOYFY290M7jPnTlu+aEzox8ztTnrL6WT8tpLD3hO6RVT5bD2KxaECsO9aGX+ydCdeq+p1tBebH3ugu7ZN8OuQMqDFAnPGZR+ZajPVoobvHVl36ubtNU+QGQuLAP9Y4vvoRmdEfYQqyFp21iI+u7vFEb3lXuRw2nVNVZKKV3zkTmE/JoPpH6L/0abgzZIufGEnuSOpYFtFAcJn/1+qiIWLS7RPAVjk+FZwOaFMTXhH1pw3QAr7M74zZc2Z0T+M7gfk4uE/djek1QI0d3Qa+IQrJ035iFTr0g0sfXn5BjcJNzIEVYpJBp5S8Hwe7FS3Gt95odtahaOW6ZIkBifiueeiZUPihMmb98QVEPBMnyG22RwNiQJnatN80zZ+P1aAORqQxqNmVGYX9diAeyh/Hz7I+gjY9SVp4BiuLPjF7KjP4LRMQvXN3lxBPkhB6TQJr0YwwXPAeO40flL8sZtM1Zl1rNzKWs32BERvgNZOACCl8ZMTtrICBJD6+1jWbB3vzhg3QvXyCdn951j9nmkEQjwVZULmCUBgEQ7okknhWdMtEbaeMjM64AUs3VybSQims=
