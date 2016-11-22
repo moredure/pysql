@@ -5,9 +5,9 @@ from .db import get_db
 def auth(function):
     @wraps(function)
     def wrapper(*args, **kwargs):
-        db = get_db()
-        cur = db.execute('select * from users where id = ? limit 1', \
-                                                  [session.get('id')])
+        cur = get_db().cursor()
+        query = """select * from users where id = %s limit 1"""
+        cur.execute(query, [session.get('id')])
         user = cur.fetchone()
         if not user:
             return redirect(url_for('login', next=request.url))

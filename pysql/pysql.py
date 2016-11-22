@@ -12,13 +12,14 @@ app.config.update(dict(
 def initdb_command():
     """Creates the database tables."""
     init_db(app)
+    get_db(app)
     print('Initialized the database.')
 
 @app.teardown_appcontext
 def close_db(error):
     """Closes the database again at the end of the request."""
-    if hasattr(g, 'sqlite_db'):
-        g.sqlite_db.close()
+    if hasattr(g, 'psql_db'):
+        g.psql_db.close()
 
 @app.route('/', methods=['POST', 'GET'])
 @auth
@@ -26,12 +27,12 @@ def close_db(error):
 def index():
     """Union SQL injection"""
     if request.method == 'POST':
-        db = get_db()
-        query = "select username, login, age, id "\
-                "from users "\
-                "where username like '%{0}%'" \
-                .format(request.form['q'])
-        cur = db.execute(query)
+        cur = get_db().cursor()
+        query = """select username, login, age, id
+                from users
+                where username like '%{0}%'
+                """.format(request.form['q'])
+        cur.execute(query)
         results = cur.fetchall()
         if not len(results):
             return dict(not_found=True)
@@ -48,13 +49,13 @@ def logout():
 def login():
     """Select SQL injection"""
     if request.method == 'POST':
-        db = get_db()
+        cur = get_db().cursor()
         login, passwd = request.form['login'], request.form['password']
         query = "select id "\
                 "from users "\
                 "where login = '{0}' and password = '{1}' limit 1"\
                 .format(login, passwd)
-        cur = db.execute(query)
+        cur.execute(query)
         user = cur.fetchone()
         if user:
             session['id'] = user['id']
@@ -67,12 +68,14 @@ def login():
 def join():
     if request.method == 'POST':
         db = get_db()
-        query = 'insert into users (login, username, password, age) '\
-                'values (?, ?, ?, ?)'
-        cur = db.execute(query, [request.form['login'],
+        cur = db.cursor()
+        query = """insert into users (login, username, password, age)
+            values (%s, %s, %s, %s) returning id"""
+        cur.execute(query, [request.form['login'],
            request.form['username'],
            request.form['password'],
            request.form['age']])
         db.commit()
-        session['id'] = cur.lastrowid
+        last_id = cur.fetchone()["id"]
+        session['id'] = last_id
         return redirect(url_for('index'))

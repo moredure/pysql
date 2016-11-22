@@ -2,13 +2,11 @@ import os
 import pysql
 import unittest
 import tempfile
-from pysql.config import DATABASE
 from pysql.db import init_db
 
 class AuthTestCase(unittest.TestCase):
 
     def setUp(self):
-        DATABASE = ':memory:'
         pysql.app.config['TESTING'] = True
         self.app = pysql.app.test_client()
         with pysql.app.app_context():
